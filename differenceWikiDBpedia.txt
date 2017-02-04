@@ -1,0 +1,23 @@
+Wikipedia et DBpedia
+
+Définitions :
+
+wikipedia : données décrites en langage humain, avec des structures récurrentes comme dans les boîtes d'information qui permettent d'être lues par une machine.
+DBpedia : données structurées de wikipédia sous la forme de données ontologiques liées. Les ontologies sont des descriptions lisibles par une machine qui peut s'interconnecter entre elles.
+DBpedia est un projet universitaire et communautaire d'exploration et extraction automatiques de données dérivées de Wikipédia. Son principe est de proposer une version structurée et sous forme de données normalisées au format du web sémantique des contenus encyclopédiques de chaque fiche encyclopédique. DBpedia vise aussi à relier à Wikipédia (et inversement) des ensembles d'autres données ouvertes provenant du Web des données 
+Avantages/inconvénients :
+
+Les plus de wikipedia : -complet (plus d'informations disponibles)
+						-plus utilisé à travers le monde
+
+Les moins de wikipedia : -langage humain
+						-absence de liens entre les grands thèmes
+
+les plus de DBpedia : -langage plus proche de la machine (les données sont donc plus faciles à traiter)
+						-liens déjà fait
+
+les moins de DBpedia : -moins de données au total
+
+Pourquoi Wikipedia choisi :
+		-travail sur la sémantique/les schémas récurrents à fournir
+		-plus complet
