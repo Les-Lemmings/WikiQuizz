@@ -1,0 +1,5 @@
+MultiWiki 
+
+La thèse "MultiWiBi : The multilingual Wikipedia bitaxonomy project." avance la possibilité d'utiliser une bitaxonomie pour l'extraction de données de Wikipédia. La bitaxonomie permet de lier les informations du texte des pages à celles des infoBoxes. Les informations extraites sont plus complètes qu'avec les précédents extracteurs.
+MultiWiki, disponible par git, utilise cette bitaxonomie dans l'extraction de données. Pour le télécharger, des modifications du code étaient nécessaires. De plus, la pénurie de mémoire disponible liée aux milliers d'informations arrivant nous a amené à stocker ces informations sur un serveur distant.
+Le programme opérationnel recueille toutes les informations wikipédia sur un thème données en plusieurs langues. Une base SQL regroupe ces informations selon les auteurs des pages wikipédia et les dates de modifications. MultiWiki est donc inapproprié dans notre cas.
