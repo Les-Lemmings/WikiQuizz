@@ -1,0 +1,16 @@
+{
+  "name": "node-extractor",
+  "version": "1.0.0",
+  "description": "Wikipedia extractor",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Les Lemmings",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.2",
+    "regex": "^0.1.1",
+    "request": "^2.80.0"
+  }
+}
