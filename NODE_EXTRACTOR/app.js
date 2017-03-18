@@ -31,17 +31,37 @@ while(!readline.eof(regfile)) {
 }
 
 
-
-
-app.get('/generate/:num', function(req, res) {
-	var num = req.num;
+function generate(num) {
+	num -= 1;
+	var scanRes;
+	var r = "";
 	request('https://fr.wikipedia.org/wiki/Sp%C3%A9cial:Page_au_hasard', function(error, response, body) {
 		//analyse de la page au hasard reçue.
-
-		console.log(body);
+		scanRes = scanner.scan(response, body);
+		console.log(r);
+		r = response.request.uri.href;
+		console.log(scanRes);
+		if(scanRes === "NO") {
+			generate(num+1);
+		} 
 	});
-	res.send('merci');
-	res.end('');
+
+	console.log("NUM: "+num);
+	
+	if(num > 0) {
+		generate(num);
+	}
+}
+
+app.get('/generate/:num', function(req, res) {
+	var num = req.params.num;
+
+	console.log("NUM: "+num);
+
+	generate(num);
+	
+	res.send();
+	res.end();
 });
 
 app.listen(3000);
