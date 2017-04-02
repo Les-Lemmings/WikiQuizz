@@ -12,15 +12,16 @@ var regfilename = "./regex.dmtt";
 
 var model = require('./models');
 
+
 /*model.ajouterQuestion({
-	titre: "lol",
-	article: "https://wikipedia.org/lolilulz",
-	categorie: "peche"
+	titre: "test",
+	article: "https://wikipedia.org/test",
+	categorie: "marche"
 }, [
 {
-	data:"coucou",
-	value: "salut",
-	sameAs:['looool']
+	data:"test",
+	value: "unitaire",
+	sameAs:['unit test']
 }
 ]);*/
 
@@ -63,7 +64,7 @@ function generate(num) {
 		console.log(scanRes);
 		if(scanRes === "NO") {
 			generate(num+1);
-		} 
+		}
 	});
 
 	console.log("NUM: "+num);
@@ -83,5 +84,7 @@ app.get('/generate/:num', function(req, res) {
 	res.send();
 	res.end();
 });
+
+
 
 app.listen(3000);

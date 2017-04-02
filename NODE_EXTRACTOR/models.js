@@ -21,9 +21,10 @@ var syntagmeSchema = new mongoose.Schema({
 var questionSchema = new mongoose.Schema({
 	qid : mongoose.Schema.ObjectId,
 	titre : String,
-	article : { type : String, unique: true, match: /^(https?:\/\/)?([0-9a-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/ },
+	article : { type : String, unique: true, match: /^(https?:\/\/)?.*\/?$/ },
 	categorie : String,
 	validee: Boolean,
+	image: [ { data: Buffer, contentType: String } ], // a.image.data = fs.readFileSync(imgPath); a.image.contentType = "image/png";
 	date: { type : Date, default : Date.now },
 	syntagmes: [ syntagmeSchema ]
 });
