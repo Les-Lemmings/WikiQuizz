@@ -3,7 +3,6 @@ var express = require('express');
 var app = express();
 var request = require('request');
 
-
 //Import personnels
 var readline = require('./node-readline');
 var scanner = require('./scanner');
@@ -11,6 +10,27 @@ var scanner = require('./scanner');
 var regfilename = "./regex.dmtt";
 
 
+var model = require('./models');
+
+/*model.ajouterQuestion({
+	titre: "lol",
+	article: "https://wikipedia.org/lolilulz",
+	categorie: "peche"
+}, [
+{
+	data:"coucou",
+	value: "salut",
+	sameAs:['looool']
+}
+]);*/
+
+/*model.trouverNonValidee(function(res) {
+	console.log(res);
+});*/
+
+model.findRandomQuestion(1, ["peche"], function(res) {
+	console.log(res);
+});
 
 var regfile = readline.fopen(regfilename, "r");
 if(regfile===false) {
