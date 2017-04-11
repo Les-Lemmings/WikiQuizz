@@ -11,6 +11,7 @@ var regfilename = "./regex.dmtt";
 
 
 var model = require('./models');
+var regles = require('./reglesassoc');
 
 
 /*model.ajouterQuestion({
@@ -64,6 +65,9 @@ function generate(num) {
 		console.log(scanRes);
 		if(scanRes === "NO") {
 			generate(num+1);
+		}
+		else {
+			regles.all(scanRes);
 		}
 	});
 
