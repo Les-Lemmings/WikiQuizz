@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var random = require('mongoose-simple-random');
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://86.75.229.131:27017/blog', function(err) {
+mongoose.connect('mongodb://192.168.1.80:27017/blog', function(err) {
   if (err) { throw err; }
 });
 
@@ -63,6 +63,10 @@ module.exports.trouverNonValidee = function(callback) {
 	var query = QuestionModel.find({}, function(err, questions) {
 		callback(questions);
 	}).where('validee').equals(false);
+}
+
+module.exports.validerQuestionParId = function(id, callback) {
+	var query = QuestionModel.update({ _id: id }, { $set: { validee: true }}, callback);
 }
 
 module.exports.findRandomQuestion = function(number, categories, callback) {

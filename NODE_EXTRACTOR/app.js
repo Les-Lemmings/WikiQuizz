@@ -79,14 +79,53 @@ function generate(num) {
 }
 
 app.get('/generate/:num', function(req, res) {
+	console.log('générer des données');
 	var num = req.params.num;
 
 	console.log("NUM: "+num);
 
 	generate(num);
-	
-	res.send();
+	res.setHeader('Access-Control-Allow-Origin', '*');
+	res.send({msg: 'ok'});
 	res.end();
+});
+
+/**
+	Renvoie un tableau json des questions en attente de validation
+*/
+app.get('/questionsOnHold', function(req, res) {
+	console.log('questions en attente');
+	model.trouverNonValidee(function(questions) {
+		res.setHeader('Content-Type', 'application/json');
+		res.setHeader('Access-Control-Allow-Origin', '*');
+		res.status(200);
+		//res.send(JSON.stringify(questions, null, 3));
+		res.json(questions);
+		res.end();
+	});
+});
+
+
+/**
+	Refuser une question
+*/
+app.get('/removeQuestion/:id', function(req, res) {
+	var id= req.params.id;
+});
+
+/**
+	Accepter une question
+*/
+app.get('/validateQuestion/:id', function(req, res) {
+	var id= req.params.id;
+	model.validerQuestionParId(id, function(err, question) {
+		if(err) console.log(err);
+		res.setHeader('Access-Control-Allow-Origin', '*');
+		res.status(200);
+
+		res.send({msg: 'ok'});
+		res.end();
+	});
 });
 
 
