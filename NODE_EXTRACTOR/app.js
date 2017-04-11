@@ -67,7 +67,7 @@ function generate(num) {
 			generate(num+1);
 		}
 		else {
-			regles.all(scanRes);
+			//regles.all(scanRes);
 		}
 	});
 
