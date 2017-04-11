@@ -25,9 +25,9 @@ var model = require('./models');
 }
 ]);*/
 
-/*model.trouverNonValidee(function(res) {
+model.trouverNonValidee(function(res) {
 	console.log(res);
-});*/
+});
 
 model.findRandomQuestion(1, ["peche"], function(res) {
 	console.log(res);
