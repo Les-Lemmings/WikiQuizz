@@ -76,13 +76,27 @@ module.exports.invaliderToutesQuestions = function(callback) {
 }
 
 module.exports.findRandomQuestion = function(number, categories, callback) {
-	QuestionModel.count(function(err, count) {
+	/*QuestionModel.count(function(err, count) {
 		if(err) {
 			return callback(err);
 		}
 		var rand = Math.floor(Math.random() * count);
 		QuestionModel.find().where('categorie').in(categories).skip(rand).limit(number).exec(callback);
-	})
+	});*/
+
+	QuestionModel.find().where('categorie').in(categories).exec(function(err, res) {
+		console.log(number, res.length);
+		if(number >= res.length) {
+			let num = res.length - 1;
+		}
+		let num = number; 
+
+		for(let i = 0; i< res.length - num;i++) {
+			console.log('luul');
+			res.splice(Math.floor(Math.random()*res.length),1);
+		}
+		callback(err, res);
+	});
 }
 
 module.exports.removeQuestionById = function(id, callback) {

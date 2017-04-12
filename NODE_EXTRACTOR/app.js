@@ -28,15 +28,15 @@ var async = require('async');
 }
 ]);*/
 
-model.trouverNonValidee(function(res) {
+/*model.trouverNonValidee(function(res) {
 	console.log(res);
-});
+});*/
 
-model.findRandomQuestion(2, ["peche"], function(err, res) {
+model.findRandomQuestion(1, ["peche"], function(err, res) {
 	console.log('RANDOM : ' + res);
 });
 
-var regfile = readline.fopen(regfilename, "r");
+/*var regfile = readline.fopen(regfilename, "r");
 if(regfile===false) {
 	console.log("Error, can't open ", regfilename);
 	process.exit(1);
@@ -52,7 +52,7 @@ while(!readline.eof(regfile)) {
 	}
 
 	count += 1;
-}
+}*/
 
 
 var generate = function() {
@@ -163,7 +163,6 @@ app.get('/requestQuestions', function(req, res) {
 		//res.send(JSON.stringify(questions, null, 3));
 		res.json(questions);
 		res.end();
-
 	});
 });
 
