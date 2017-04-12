@@ -85,6 +85,10 @@ module.exports.findRandomQuestion = function(number, categories, callback) {
 	})
 }
 
+module.exports.removeQuestionById = function(id, callback) {
+	QuestionModel.findByIdAndRemove(id, callback);
+}
+
 //Vérifier que la réponse dans une boite de réponse correspond à un syntagme de la question ou sameAs
 
 module.exports.findQuestionById = function(id, callback) {

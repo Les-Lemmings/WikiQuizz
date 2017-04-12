@@ -79,6 +79,7 @@ var generate = function() {
 
 var scanning = function(scanRes) {
 	console.log('SCANNING');
+	regles.all(scanRes);
 }
 
 app.get('/generate/:num', function(req, res) {
@@ -118,6 +119,16 @@ app.get('/questionsOnHold', function(req, res) {
 */
 app.get('/removeQuestion/:id', function(req, res) {
 	var id= req.params.id;
+	model.removeQuestionById(id, function(err, question) {
+		if(err) { throw err; }
+
+		res.setHeader('Content-Type', 'application/json');
+		res.setHeader('Access-Control-Allow-Origin', '*');
+		res.status(200);
+		//res.send(JSON.stringify(questions, null, 3));
+		res.json({msg : 'ok'});
+		res.end();
+	});
 });
 
 /**
