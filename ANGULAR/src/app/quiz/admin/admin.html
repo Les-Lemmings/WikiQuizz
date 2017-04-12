@@ -1,0 +1,36 @@
+<div id="page">
+
+    <section>
+        <fieldset id="field2">
+            <legend> <h2>Généré</h2> </legend>
+    
+                <button (click)=appel_serveur()>Ok</button>
+                <button (click)=clickedQuestions()>Reload</button>
+
+        </fieldset>
+    </section>
+
+
+    <section>
+        <fieldset id="field2">
+            <legend> <h2>Questions</h2> </legend>
+            
+                <tr *ngFor="let question of questions">
+                    <td>{{question.titre}}</td>
+                    <button (click)=clickedID(question._id)>Ok</button>
+                    <button (click)=clickedSuppression(question._id)>Supprimer</button>
+                </tr>
+
+        </fieldset>
+    </section>
+
+    <section>
+        <fieldset id="field2">
+            <legend> <h2>Deconnexion</h2> </legend>
+    
+                <button #deconnexion value="Deconnexion" (click)=clickedDeconnexion(deconnexion.value)>Deconnexion</button>
+
+        </fieldset>
+    </section>
+
+</div>
