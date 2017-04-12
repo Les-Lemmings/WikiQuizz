@@ -13,6 +13,8 @@ var regfilename = "./regex.dmtt";
 var model = require('./models');
 var regles = require('./reglesassoc');
 
+var async = require('async');
+
 
 /*model.ajouterQuestion({
 	titre: "test",
@@ -30,7 +32,7 @@ model.trouverNonValidee(function(res) {
 	console.log(res);
 });
 
-model.findRandomQuestion(1, ["peche"], function(res) {
+model.findRandomQuestion(1, ["peche", "nage"], function(res) {
 	console.log(res);
 });
 
@@ -45,18 +47,19 @@ var count = 0;
 while(!readline.eof(regfile)) {
 	var line = unescape(encodeURIComponent(readline.fgets(regfile)));
 	if(line !== false) {
-		reg = new RegExp(line);
-		regex_array.push(reg);
+		//reg = new RegExp(line);
+		//regex_array.push(reg);
 	}
 
 	count += 1;
 }
 
 
-function generate(num) {
-	num -= 1;
+var generate = function() {
+	
 	var scanRes;
-	var r = "";
+	var r = "";	
+
 	request('https://fr.wikipedia.org/wiki/Sp%C3%A9cial:Page_au_hasard', function(error, response, body) {
 		//analyse de la page au hasard reçue.
 		scanRes = scanner.scan(response, body);
@@ -64,30 +67,34 @@ function generate(num) {
 		r = response.request.uri.href;
 		console.log(scanRes);
 		if(scanRes === "NO") {
-			generate(num+1);
+			console.log('NOOOOOOOOOOOOOOOOOOO');
+			generate();
 		}
 		else {
-			//regles.all(scanRes);
+			console.log('YESSSSSS');
+			scanning(scanRes);
 		}
-	});
+	});	
+}
 
-	console.log("NUM: "+num);
-	
-	if(num > 0) {
-		generate(num);
-	}
+var scanning = function(scanRes) {
+	console.log('SCANNING');
 }
 
 app.get('/generate/:num', function(req, res) {
 	console.log('générer des données');
 	var num = req.params.num;
 
-	console.log("NUM: "+num);
+	for(var i = 0; i< num; i++) {
+		generate();
+	}
+	
 
-	generate(num);
 	res.setHeader('Access-Control-Allow-Origin', '*');
+
 	res.send({msg: 'ok'});
 	res.end();
+	
 });
 
 /**
@@ -126,8 +133,12 @@ app.get('/validateQuestion/:id', function(req, res) {
 		res.send({msg: 'ok'});
 		res.end();
 	});
+
 });
 
+model.invaliderToutesQuestions(function() {
 
+});
 
 app.listen(3000);
+

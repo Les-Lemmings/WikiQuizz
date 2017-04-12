@@ -69,6 +69,10 @@ module.exports.validerQuestionParId = function(id, callback) {
 	var query = QuestionModel.update({ _id: id }, { $set: { validee: true }}, callback);
 }
 
+module.exports.invaliderToutesQuestions = function(callback) {
+	var query = QuestionModel.update({ validee:true }, { $set: { validee: false }}, callback);
+}
+
 module.exports.findRandomQuestion = function(number, categories, callback) {
 	QuestionModel.count(function(err, count) {
 		if(err) {
