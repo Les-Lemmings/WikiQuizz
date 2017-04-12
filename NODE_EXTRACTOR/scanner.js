@@ -12,6 +12,8 @@ exports.scan = function(resp, body) {
 	let textInfobox = "";
 	
 	let pertinent = true;
+	let imagesSrc = [];
+	let infobox = [];
 
 	//console.log($('.infobox_v2, .infobox_v3').next().text());
 
@@ -27,6 +29,15 @@ exports.scan = function(resp, body) {
 				}
 			}
 		});
+
+		//Stockage de l'infobox dans un tableau
+		$('.infobox_v2 tr, .infobox_v3 tr').each(function(i, elem) {
+			let key = $(this).children('th').text();
+			let value = $(this).children('td').text();
+			infobox.push({key: key, value: value});
+		});
+
+
 		let numImg = 0;
 		$('.infobox_v2 img, .infobox_v3 img').each(function(i, elem) {
 			
@@ -37,6 +48,7 @@ exports.scan = function(resp, body) {
 				&& !_.includes($(this).attr('alt'),"Bandera")
 				&& parseInt($(this).attr('width')) * parseInt($(this).attr('height')) > 22500) {
 				numImg++;
+				imagesSrc.push($(this).attr('src'));
 			}
 			
 			//console.log($(this).attr('alt') + ' ==> size: ' + parseInt($(this).attr('width')) * parseInt($(this).attr('height')));

@@ -50,6 +50,8 @@ module.exports.ajouterQuestion = function(q, s) {
 		question.syntagmes.push(i);
 	}
 
+	//console.log(QuestionModel.exists()
+
 	question.save(function(err) {
 		if(err){
 			console.log(err);
@@ -79,9 +81,7 @@ module.exports.findRandomQuestion = function(number, categories, callback) {
 			return callback(err);
 		}
 		var rand = Math.floor(Math.random() * count);
-		QuestionModel.find().where('categorie').in(categories).skip(rand).limit(number).exec(function(err, res) {
-			callback(res);
-		});
+		QuestionModel.find().where('categorie').in(categories).skip(rand).limit(number).exec(callback);
 	})
 }
 

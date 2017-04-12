@@ -32,8 +32,8 @@ model.trouverNonValidee(function(res) {
 	console.log(res);
 });
 
-model.findRandomQuestion(1, ["peche", "nage"], function(res) {
-	console.log(res);
+model.findRandomQuestion(2, ["peche"], function(err, res) {
+	console.log('RANDOM : ' + res);
 });
 
 var regfile = readline.fopen(regfilename, "r");
@@ -79,7 +79,7 @@ var generate = function() {
 
 var scanning = function(scanRes) {
 	console.log('SCANNING');
-	regles.all(scanRes);
+	//regles.all(scanRes);
 }
 
 app.get('/generate/:num', function(req, res) {
@@ -146,6 +146,28 @@ app.get('/validateQuestion/:id', function(req, res) {
 	});
 
 });
+
+
+app.get('/requestQuestions', function(req, res) {
+	var nb = req.query.nb;
+	var categories = req.query.cat;
+	categories = categories.split(';');
+
+	console.log(nb, categories);
+
+	model.findRandomQuestion(nb, categories, function(err, questions) {
+		console.log("Questions:"+ questions);
+		res.setHeader('Content-Type', 'application/json');
+		res.setHeader('Access-Control-Allow-Origin', '*');
+		res.status(200);
+		//res.send(JSON.stringify(questions, null, 3));
+		res.json(questions);
+		res.end();
+
+	});
+});
+
+
 
 model.invaliderToutesQuestions(function() {
 
