@@ -27,6 +27,7 @@ coverage
 build/Release
 
 # Dependency directories
+ANGULAR/node_modules
 node_modules
 jspm_packages
 
