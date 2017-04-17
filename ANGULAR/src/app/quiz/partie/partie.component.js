@@ -43,7 +43,7 @@ var PartieComponent = (function () {
     PartieComponent.prototype.clickedQuestionnaire = function () {
         var _this = this;
         console.log('exportation de données');
-        this.http.get('http://192.168.1.31:3000/requestQuestions?nb=' + this.nombreTest + '&cat=' + this.cat)
+        this.http.get('http://192.168.1.31:4000/requestQuestions?nb=' + this.nombreTest + '&cat=' + this.cat)
             .map(function (res) { return res.json(); })
             .subscribe(function (res) { return _this.resultatQuestionnaire(res); }, function (err) { return console.error(err); }, function () { return console.log('done'); });
     };

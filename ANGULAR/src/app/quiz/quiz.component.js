@@ -9,7 +9,7 @@ var core_1 = require("@angular/core");
 var QuizComponent = (function () {
     function QuizComponent() {
         this.connecter = true;
-        this.admin = false;
+        this.admin = true;
     }
     QuizComponent.prototype.onVoted = function (value) {
         console.log(value);

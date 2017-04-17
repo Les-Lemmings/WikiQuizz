@@ -14,36 +14,52 @@ require("rxjs/add/operator/map");
 var AdminComponent = (function () {
     function AdminComponent(http) {
         this.onVoted = new core_1.EventEmitter();
+        this.nombreQuestion = 0;
         this.http = http;
         this.reponse = [];
         this.questions = this.clickedQuestions();
     }
-    AdminComponent.prototype.clickedID = function (value) {
-        var _this = this;
+    AdminComponent.prototype.clickedAjout = function (value) {
         console.log(value);
         console.log('exportation de données');
-        this.http.get('http://192.168.1.31:3000/validateQuestion/' + value)
+        /*this.http.get('http://192.168.1.31:4000/validateQuestion/'+value)
+                .map((res:Response) => res.json())
+                .subscribe(res => this.clickedQuestions(),
+                    err => console.error(err),
+                    () => console.log('done'));*/
+        this.http.get('http://192.168.1.31:4000/validateQuestion', JSON.stringify({ msg: "ll" }), { headers: { 'Content-Type': 'application/json' } })
             .map(function (res) { return res.json(); })
-            .subscribe(function (res) { return _this.clickedQuestions(); }, function (err) { return console.error(err); }, function () { return console.log('done'); });
+            .subscribe(function (res) { return console.log("bite"); }, function (err) { return console.error(err); }, function () { return console.log('done'); });
+        /*this.http.put('http://192.168.1.31:4000/validateQuestion', "us=pp").map((res:Response) => res.json())
+                .subscribe(res => console.log("bite"),
+                    err => console.error(err),
+                    () => console.log('done'));;*/
+        console.log("fini");
+    };
+    AdminComponent.prototype.getPutHeaders = function () {
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return new http_1.RequestOptions({ headers: headers, withCredentials: true });
     };
     AdminComponent.prototype.clickedSuppression = function (value) {
         var _this = this;
         console.log(value);
         console.log('exportation de données');
-        this.http.get('http://192.168.1.31:3000/removeQuestion/' + value)
+        this.http.get('http://192.168.1.31:4000/removeQuestion/' + value)
             .map(function (res) { return res.json(); })
             .subscribe(function (res) { return _this.clickedQuestions(); }, function (err) { return console.error(err); }, function () { return console.log('done'); });
     };
     AdminComponent.prototype.clickedQuestions = function () {
         var _this = this;
         console.log('importation de données');
-        this.http.get('http://192.168.1.31:3000/questionsOnHold')
+        this.http.get('http://192.168.1.31:4000/questionsOnHold')
             .map(function (res) { return res.json(); })
             .subscribe(function (res) { return _this.resultatQuestions(res); }, function (err) { return console.error(err); }, function () { return console.log('done'); });
     };
-    AdminComponent.prototype.appel_serveur = function () {
+    AdminComponent.prototype.appel_serveur = function (nombre) {
+        this.nombreQuestion = nombre;
         console.log('importation de données');
-        this.http.get('http://192.168.1.31:3000/generate/3')
+        this.http.get('http://192.168.1.31:4000/generate/' + this.nombreQuestion)
             .map(function (res) { return res.json(); })
             .subscribe(function (res) { return console.log(res); }, function (err) { return console.error(err); }, function () { return console.log('done'); });
     };
@@ -53,7 +69,7 @@ var AdminComponent = (function () {
     };
     AdminComponent.prototype.clickedDeconnexion = function (value) {
         this.onVoted.emit(value);
-        console.log("bite");
+        console.log(value);
     };
     return AdminComponent;
 }());

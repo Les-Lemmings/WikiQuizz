@@ -59,7 +59,7 @@ export class PartieComponent
 	clickedQuestionnaire()
 	{
 		console.log('exportation de données');
-		this.http.get('http://192.168.1.31:3000/requestQuestions?nb='+this.nombreTest+'&cat='+this.cat)
+		this.http.get('http://192.168.1.31:4000/requestQuestions?nb='+this.nombreTest+'&cat='+this.cat)
 				.map((res:Response) => res.json())
 				.subscribe(res => this.resultatQuestionnaire(res),
 					err => console.error(err),
