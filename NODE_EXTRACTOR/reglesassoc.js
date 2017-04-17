@@ -40,12 +40,12 @@ var chercherSyntagmes = function(scanRes, cb) {
 		for(var i=0; i<regles.length; i++){
 			regle = regles[i].split("//")[0];
 			key = regle.split("->")[0];
-			regex = regle.split("->")[1].split(":")[0];
-			type = regle.split("->")[1].split(":")[1];
+			regex = regle.split("->")[1].split(":::")[0];
+			type = regle.split("->")[1].split(":::")[1];
 
 			if( texte.indexOf(key) != -1) {
 				//on place l'index sur le mot suivant (+1 pour l'espace)
-				index = texte.indexOf(key) + key.length - 1;
+				index = texte.indexOf(key) + key.length;
 				//test de la regex sur les mots suivants (jusqu'a 10 ou match)
 				console.log("suivant: "+texte.substring(index) +"\n");
 				for (var j=0; j<10; j++){

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { Http, Response, RequestOptions} from '@angular/http';
+import { Http, Response, RequestOptions, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Component({
@@ -23,35 +23,27 @@ export class AdminComponent
 		this.questions = this.clickedQuestions();
 	}	
 
-	clickedAjout(value :string)
+	clickedAjout(value :any)
 	{
 		console.log(value);
 
 		console.log('exportation de données');
-		/*this.http.get('http://192.168.1.31:4000/validateQuestion/'+value)
-				.map((res:Response) => res.json())
-				.subscribe(res => this.clickedQuestions(),
-					err => console.error(err),
-					() => console.log('done'));*/
 
-		/*this.http.get('http://192.168.1.31:4000/validateQuestion', JSON.stringify({msg: "ll"}), {headers:{'Content-Type': 'application/json'}})
+		this.http.post('http://192.168.1.31:4000/validateQuestion', value, this.getPutHeaders())
 				.map((res:Response) => res.json())
-				.subscribe(res => console.log("bite"),
+				.subscribe(res => console.log(res.msg),
 					err => console.error(err),
-					() => console.log('done'));*/
-		/*this.http.put('http://192.168.1.31:4000/validateQuestion', "us=pp").map((res:Response) => res.json())
-				.subscribe(res => console.log("bite"),
-					err => console.error(err),
-					() => console.log('done'));;*/
+					() => console.log('done'));
+		
 		console.log("fini");
 	}
 
-	/*getPutHeaders()
+	getPutHeaders()
 	{
 		let headers = new Headers();
 		headers.append('Content-Type', 'application/json');
-		return new RequestOptions({headers: headers, withCredentials: true});
-	}*/
+		return new RequestOptions({headers: headers, withCredentials: false});
+	}
 
 	clickedSuppression(value :string)
 	{

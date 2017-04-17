@@ -15,8 +15,12 @@ var regles = require('./reglesassoc');
 
 var async = require('async');
 var cors = require('cors');
+var bodyParser = require('body-parser');
 
 app.use(cors());
+
+app.use(bodyParser.json());
+
 
 
 
@@ -156,16 +160,17 @@ function originMiddleware() {
 	
 }
 
-app.get('/validateQuestion', function(req, res) {
-	console.log('validate: ' + req.query.msg);
+app.post('/validateQuestion', function(req, res) {
+	console.log('Validating...');
 	//res.addHeader('Access-Control-Allow-Headers', 'Content-Type');
-	res.setHeader('Access-Control-Allow-Origin', '*');
-	//res.addHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-	//res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-	//res.status(200);
-		//res.send(JSON.stringify(questions, null, 3));
-	res.json({msg:"ok"});
-	res.end();
+
+	model.validerQuestion(req.body, function(err, question) {
+		res.setHeader('Access-Control-Allow-Origin', '*');
+		//res.status(200);
+		res.json({msg:"ok"});
+		res.end();
+	});
+	
 });
 
 

@@ -65,6 +65,10 @@ module.exports.ajouterQuestion = function(q, s) {
 	});
 };
 
+module.exports.validerQuestion = function(q, callback) {
+	var query = QuestionModel.update({ _id: q._id }, {$set: { validee:false, categorie:q.categorie, syntagmes:q.syntagmes }}, callback);
+}
+
 module.exports.trouverNonValidee = function(callback) {
 	var query = QuestionModel.find({}, function(err, questions) {
 		callback(questions);

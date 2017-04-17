@@ -22,28 +22,16 @@ var AdminComponent = (function () {
     AdminComponent.prototype.clickedAjout = function (value) {
         console.log(value);
         console.log('exportation de données');
-        /*this.http.get('http://192.168.1.31:4000/validateQuestion/'+value)
-                .map((res:Response) => res.json())
-                .subscribe(res => this.clickedQuestions(),
-                    err => console.error(err),
-                    () => console.log('done'));*/
-        /*this.http.get('http://192.168.1.31:4000/validateQuestion', JSON.stringify({msg: "ll"}), {headers:{'Content-Type': 'application/json'}})
-                .map((res:Response) => res.json())
-                .subscribe(res => console.log("bite"),
-                    err => console.error(err),
-                    () => console.log('done'));*/
-        /*this.http.put('http://192.168.1.31:4000/validateQuestion', "us=pp").map((res:Response) => res.json())
-                .subscribe(res => console.log("bite"),
-                    err => console.error(err),
-                    () => console.log('done'));;*/
+        this.http.post('http://192.168.1.31:4000/validateQuestion', value, this.getPutHeaders())
+            .map(function (res) { return res.json(); })
+            .subscribe(function (res) { return console.log(res.msg); }, function (err) { return console.error(err); }, function () { return console.log('done'); });
         console.log("fini");
     };
-    /*getPutHeaders()
-    {
-        let headers = new Headers();
+    AdminComponent.prototype.getPutHeaders = function () {
+        var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
-        return new RequestOptions({headers: headers, withCredentials: true});
-    }*/
+        return new http_1.RequestOptions({ headers: headers, withCredentials: false });
+    };
     AdminComponent.prototype.clickedSuppression = function (value) {
         var _this = this;
         console.log(value);
