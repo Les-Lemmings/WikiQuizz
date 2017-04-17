@@ -14,6 +14,10 @@ var model = require('./models');
 var regles = require('./reglesassoc');
 
 var async = require('async');
+var cors = require('cors');
+
+app.use(cors());
+
 
 
 /*model.ajouterQuestion({
@@ -59,8 +63,8 @@ var generate = function() {
 	
 	var scanRes;
 	var r = "";	
-
-	request('https://fr.wikipedia.org/wiki/Sp%C3%A9cial:Page_au_hasard', function(error, response, body) {
+	//https://fr.wikipedia.org/wiki/Sp%C3%A9cial:Page_au_hasard
+	request('https://fr.wikipedia.org/wiki/Résolution_413_du_Conseil_de_sécurité_des_Nations_unies', function(error, response, body) {
 		//analyse de la page au hasard reçue.
 		scanRes = scanner.scan(response, body);
 		console.log(r);
@@ -148,8 +152,20 @@ app.get('/validateQuestion/:id', function(req, res) {
 
 });
 
-app.post('/validateQuestion', function(req, res) {
-	console.log(req.body);
+function originMiddleware() {
+	
+}
+
+app.get('/validateQuestion', function(req, res) {
+	console.log('validate: ' + req.query.msg);
+	//res.addHeader('Access-Control-Allow-Headers', 'Content-Type');
+	res.setHeader('Access-Control-Allow-Origin', '*');
+	//res.addHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+	//res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+	//res.status(200);
+		//res.send(JSON.stringify(questions, null, 3));
+	res.json({msg:"ok"});
+	res.end();
 });
 
 

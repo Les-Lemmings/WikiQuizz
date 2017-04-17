@@ -4,22 +4,40 @@
         <fieldset id="field2">
             <legend> <h2>Généré</h2> </legend>
     
-                <button (click)=appel_serveur()>Ok</button>
+                <input #nombreQuestion type="number" />
+                <label>Nombre questions</label>
+                <br>
+
+                <button (click)=appel_serveur(nombreQuestion.value)>Ok</button>
                 <button (click)=clickedQuestions()>Reload</button>
 
         </fieldset>
     </section>
 
 
-    <section>
+    <section *ngFor="let question of questions">
         <fieldset id="field2">
-            <legend> <h2>Questions</h2> </legend>
+            <legend> <h2>Question</h2> </legend>
             
-                <tr *ngFor="let question of questions">
-                    <td>{{question.titre}}</td>
-                    <button (click)=clickedID(question._id)>Ok</button>
-                    <button (click)=clickedSuppression(question._id)>Supprimer</button>
-                </tr>
+                <a href={{question.article}} target="_blank"> Titre: {{question.titre}} </a>
+                <br>
+                <br>
+
+                <label>Catégorie</label>
+                <input type="text" name="reponse3" id="reponse" value={{question.categorie}}/>
+                <br>
+
+                <img src={{question.image[0]}} width="400px" height="400px">
+
+                <table *ngFor="let syntagme of question.syntagmes">
+                    <tr>
+                        <td><input type="text" name="reponse" id="reponse" value={{syntagme.data}} /></td>
+                        <td><input type="text" name="reponse" id="reponse" value={{syntagme.value}} /></td>
+                    </tr>
+                </table>
+
+                <button (click)=clickedAjout(question._id)>Ok</button>
+                <button (click)=clickedSuppression(question._id)>Supprimer</button>
 
         </fieldset>
     </section>
