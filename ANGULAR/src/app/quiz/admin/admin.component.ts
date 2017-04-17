@@ -34,11 +34,11 @@ export class AdminComponent
 					err => console.error(err),
 					() => console.log('done'));*/
 
-		this.http.get('http://192.168.1.31:4000/validateQuestion', JSON.stringify({msg: "ll"}), {headers:{'Content-Type': 'application/json'}})
+		/*this.http.get('http://192.168.1.31:4000/validateQuestion', JSON.stringify({msg: "ll"}), {headers:{'Content-Type': 'application/json'}})
 				.map((res:Response) => res.json())
 				.subscribe(res => console.log("bite"),
 					err => console.error(err),
-					() => console.log('done'));
+					() => console.log('done'));*/
 		/*this.http.put('http://192.168.1.31:4000/validateQuestion', "us=pp").map((res:Response) => res.json())
 				.subscribe(res => console.log("bite"),
 					err => console.error(err),
@@ -46,12 +46,12 @@ export class AdminComponent
 		console.log("fini");
 	}
 
-	getPutHeaders()
+	/*getPutHeaders()
 	{
 		let headers = new Headers();
 		headers.append('Content-Type', 'application/json');
 		return new RequestOptions({headers: headers, withCredentials: true});
-	}
+	}*/
 
 	clickedSuppression(value :string)
 	{
