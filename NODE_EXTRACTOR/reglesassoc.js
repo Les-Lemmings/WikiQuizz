@@ -3,8 +3,10 @@ var model = require("./models");
 var fs = require("fs");
 
 module.exports.all = function(scanRes) {
-	var texte = scanRes;
-	var infobox = [];
+	var texte = scanRes.text;
+	var infobox = scanRes.infobox;
+	var imgSrc = scanRes.images;
+	var url = scanRes.url;
 	var regle = "";
 	var key = "";
 	var regex = "";
@@ -42,7 +44,7 @@ module.exports.all = function(scanRes) {
 		}
 		model.ajouterQuestion({
 			titre: scanRes.titre,
-			article: scanRes.article,
+			article: scanRes.url,
 			categorie: "peche",
 			validee: false,
 			image: scanRes.images || null
