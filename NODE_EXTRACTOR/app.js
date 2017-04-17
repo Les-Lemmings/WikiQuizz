@@ -67,7 +67,7 @@ var generate = function() {
 		r = response.request.uri.href;
 		console.log(scanRes);
 		if(scanRes === "NO") {
-			console.log('NOOOOOOOOOOOOOOOOOOO');
+			console.log('NOOOOOOOOO');
 			generate();
 		}
 		else {
@@ -172,5 +172,7 @@ model.invaliderToutesQuestions(function() {
 
 });
 
-app.listen(3000);
+app.listen(4000, function () {
+	console.log('Server listening on port 4000');
+});
 

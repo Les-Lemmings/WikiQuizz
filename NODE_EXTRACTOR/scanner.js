@@ -4,12 +4,11 @@ var _ = require('lodash');
 
 
 exports.scan = function(resp, body) {
-	console.log(resp.request.uri.href);
+	console.log('URL', resp.request.uri.href);
 	let $ = cheerio.load(body);
 	let pIsNextSibling = true;
 
 	let textIntro = "";
-	let textInfobox = "";
 	
 	let pertinent = true;
 	let imagesSrc = [];
@@ -34,7 +33,11 @@ exports.scan = function(resp, body) {
 		$('.infobox_v2 tr, .infobox_v3 tr').each(function(i, elem) {
 			let key = $(this).children('th').text();
 			let value = $(this).children('td').text();
-			infobox.push({key: key, value: value});
+
+			if(key !== '' && value !== '') {
+				infobox.push({key: key, value: value});
+			}
+			
 		});
 
 
@@ -48,7 +51,7 @@ exports.scan = function(resp, body) {
 				&& !_.includes($(this).attr('alt'),"Bandera")
 				&& parseInt($(this).attr('width')) * parseInt($(this).attr('height')) > 22500) {
 				numImg++;
-				imagesSrc.push($(this).attr('src'));
+				imagesSrc.push('http:'+$(this).attr('src'));
 			}
 			
 			//console.log($(this).attr('alt') + ' ==> size: ' + parseInt($(this).attr('width')) * parseInt($(this).attr('height')));
@@ -73,8 +76,7 @@ exports.scan = function(resp, body) {
 	
 
 	if(pertinent) {
-		console.log(textIntro+'\n\n');
-		return textIntro;
+		return { text: textIntro, url: resp.request.uri.href, img: imagesSrc, infobox: infobox};
 	}
 	else {
 		return "NO";
