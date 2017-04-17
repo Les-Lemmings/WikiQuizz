@@ -24,7 +24,7 @@ var questionSchema = new mongoose.Schema({
 	article : { type : String, unique: true, match: /^(https?:\/\/)?.*\/?$/ },
 	categorie : String,
 	validee: Boolean,
-	image: [ { data: Buffer, contentType: String } ], // a.image.data = fs.readFileSync(imgPath); a.image.contentType = "image/png";
+	image: [ String ], // a.image.data = fs.readFileSync(imgPath); a.image.contentType = "image/png";
 	date: { type : Date, default : Date.now },
 	syntagmes: [ syntagmeSchema ]
 });
@@ -43,12 +43,16 @@ module.exports.ajouterQuestion = function(q, s) {
 	question.article = q.article;
 	question.validee = false;
 	question.categorie = q.categorie;
+	question.image = q.image;
 
 	var syntagmes = new SyntagmeModel();
 	
-	for (i in s) {
-		question.syntagmes.push(i);
-	}
+	/*for (var i = 0; i < s.length; i++) {
+		console.log(s[i], "PUSHED");
+		question.syntagmes.push(s[i]);
+	}*/
+
+	question.syntagmes = s;
 
 	//console.log(QuestionModel.exists()
 

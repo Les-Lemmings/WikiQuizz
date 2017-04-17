@@ -35,7 +35,7 @@ exports.scan = function(resp, body) {
 			let value = $(this).children('td').text();
 
 			if(key !== '' && value !== '') {
-				infobox.push({key: key, value: value});
+				infobox.push({data: key, value: value});
 			}
 			
 		});

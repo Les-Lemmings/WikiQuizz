@@ -136,6 +136,7 @@ app.get('/removeQuestion/:id', function(req, res) {
 */
 app.get('/validateQuestion/:id', function(req, res) {
 	var id= req.params.id;
+	//var 
 	model.validerQuestionParId(id, function(err, question) {
 		if(err) console.log(err);
 		res.setHeader('Access-Control-Allow-Origin', '*');
@@ -145,6 +146,10 @@ app.get('/validateQuestion/:id', function(req, res) {
 		res.end();
 	});
 
+});
+
+app.post('/validateQuestion', function(req, res) {
+	console.log(req.body);
 });
 
 
