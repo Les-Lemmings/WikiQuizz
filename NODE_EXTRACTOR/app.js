@@ -79,7 +79,7 @@ var generate = function() {
 
 var scanning = function(scanRes) {
 	console.log('SCANNING');
-	//regles.all(scanRes);
+	regles.all(scanRes);
 }
 
 app.get('/generate/:num', function(req, res) {

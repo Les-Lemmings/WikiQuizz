@@ -76,7 +76,7 @@ exports.scan = function(resp, body) {
 	
 
 	if(pertinent) {
-		return { text: textIntro, url: resp.request.uri.href, img: imagesSrc, infobox: infobox};
+		return { titre: $('.firstHeading').text(),text: textIntro, url: resp.request.uri.href, img: imagesSrc, infobox: infobox};
 	}
 	else {
 		return "NO";
