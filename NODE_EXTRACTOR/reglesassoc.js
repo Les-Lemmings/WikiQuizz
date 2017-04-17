@@ -45,7 +45,7 @@ var chercherSyntagmes = function(scanRes, cb) {
 
 			if( texte.indexOf(key) != -1) {
 			//on place l'index sur le mot suivant (+1 pour l'espace)
-			index = texte.indexOf(key) + key.length + 1;
+			index = texte.indexOf(key) + key.length;
 			//test de la regex sur les mots suivants (jusqu'a 10 ou match)
 				console.log("suivant: "+texte.substring(index) +"\n");
 				for (var j=0; j<10; j++){
