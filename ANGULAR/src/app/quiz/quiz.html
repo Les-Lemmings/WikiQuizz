@@ -1,0 +1,13 @@
+<header> <h1>El Quizzo</h1> </header>
+
+<div *ngIf="connecter">
+
+	<admin *ngIf="admin">Loading AdminComponent content here ...</admin>
+
+	<!--<menu *ngIf="!admin">Loading MenuComponent content here ...</menu> !-->
+
+	<partie *ngIf="!admin">Loading PartieComponent content here ...</partie>
+
+</div>
+
+<connexion *ngIf="!connecter" (onVoted)="onVoted($event)" >Loading ConnexionComponent content here ...</connexion>

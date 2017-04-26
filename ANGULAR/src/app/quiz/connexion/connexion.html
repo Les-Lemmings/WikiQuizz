@@ -1,0 +1,55 @@
+<div id="page">
+
+    <section>
+        <fieldset id="field1" >
+            <legend> <h2>Connexion</h2> </legend>
+
+            <label for="Identifiant">Identifiant</label>
+            <input type="text" name="Identifiant" id="Identifiant" placeholder="Ex : exemple@gmail.com" required="required"/>
+            <br>
+            <br>
+
+            <label for="MDP">Mot de passe</label>
+            <input type="password" name="MDP" id="MDP" required="required"/>
+            <br>
+            <br>
+
+            <button #connexion value="Connexion" (click)=clickedConnexion(connexion.value)>Envoyer</button>
+
+        </fieldset>
+
+        <fieldset id="field2">
+            <legend> <h2>Inscription</h2> </legend>
+
+            <label for="Identifiant">Identifiant</label>
+            <input type="email" name="Identifiant" id="Identifiant" placeholder="Ex : exemple@gmail.com" required="required"/>
+            <br>
+            <br>
+
+            <label for="MDP">Mot de passe</label>
+            <input type="password" name="MDP" id="MDP" required="required"/>
+            <br>
+            <br>
+
+            <label for="confirmMDP">Confirmer mot de passe</label>
+            <input type="password" name="confirmMDP" id="confirmMDP" required="required"/>
+            <br>
+            <br>
+
+            <label for="Pseudo">Pseudo</label>
+            <input type="text" name="Pseudo" id="Pseudo" required="required"/>
+            <br>
+            <br>
+
+            <input type="submit" value="Envoyer" >
+
+        </fieldset>
+
+        <fieldset id="field2">
+            <legend> <h2>Jouer directement</h2> </legend>
+
+            <button #jouer value="Jouer" (click)=clickedConnexion(jouer.value)>Jouer</button>
+
+        </fieldset>
+    </section>
+</div>

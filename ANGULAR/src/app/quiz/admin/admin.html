@@ -1,0 +1,54 @@
+<div id="page">
+
+    <section>
+        <fieldset id="field2">
+            <legend> <h2>Généré</h2> </legend>
+    
+                <input #nombreQuestion type="number" />
+                <label>Nombre questions</label>
+                <br>
+
+                <button (click)=appel_serveur(nombreQuestion.value)>Ok</button>
+                <button (click)=clickedQuestions()>Reload</button>
+
+        </fieldset>
+    </section>
+
+
+    <section *ngFor="let question of questions">
+        <fieldset id="field2">
+            <legend> <h2>Question</h2> </legend>
+            
+                <a href={{question.article}} target="_blank"> Titre: {{question.titre}} </a>
+                <br>
+                <br>
+
+                <label>Catégorie</label>
+                <input type="text" name="reponse3" id="reponse" [(ngModel)]="question.categorie" value={{question.categorie}}/>
+                <br>
+
+                <img src={{question.image[0]}} width="400px" height="400px">
+
+                <table *ngFor="let syntagme of question.syntagmes">
+                    <tr>
+                        <td><input type="text" name="reponse-{{syntagme}}" id="reponse" [(ngModel)]="syntagme.data" value={{syntagme.data}} /></td>
+                        <td><input type="text" name="reponse-{{syntagme}}" id="reponse" [(ngModel)]="syntagme.value" value={{syntagme.value}} /></td>
+                    </tr>
+                </table>
+
+                <button (click)=clickedAjout(question)>Ok</button>
+                <button (click)=clickedSuppression(question._id)>Supprimer</button>
+
+        </fieldset>
+    </section>
+
+    <section>
+        <fieldset id="field2">
+            <legend> <h2>Deconnexion</h2> </legend>
+    
+                <button #deconnexion value="Deconnexion" (click)=clickedDeconnexion(deconnexion.value)>Deconnexion</button>
+
+        </fieldset>
+    </section>
+
+</div>

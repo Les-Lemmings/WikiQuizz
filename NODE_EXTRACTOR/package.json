@@ -1,0 +1,26 @@
+{
+  "name": "node-extractor",
+  "version": "1.0.0",
+  "description": "Wikipedia extractor",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Les Lemmings",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.3.0",
+    "body-parser": "^1.17.1",
+    "cheerio": "^0.22.0",
+    "cors": "^2.8.3",
+    "express": "^4.15.2",
+    "htmlparser": "^1.7.7",
+    "lodash": "^4.17.4",
+    "mongoose": "^4.9.2",
+    "mongoose-simple-random": "^0.4.1",
+    "needle": "^1.5.2",
+    "regex": "^0.1.1",
+    "request": "^2.80.0",
+    "soupselect": "^0.2.0"
+  }
+}

@@ -1,0 +1,12 @@
+est un ->^[a-zA-Z]{4,}:::métier// premier mot apres "est un" correspond à type
+est une ->^[^ \.,:/0-9]{4,}:::métier// premier mot apres "est un" correspond à type
+est une espèce de ->^[a-zA-Z0-9]*{4,}:::espèce// premier mot apres "est une espèce de" correspond à espèce
+publié par ->^[a-zA-Z0-9]{4,}:::éditeur// premier mot apres "est une"  correspond à éditeur
+de la famille de ->^[a-zA-Z0-9]{4,}:::famille// premier mot apres "de la famille"  correspond à famille
+un affluent de ->^[a-zA-Z0-9]{4,}:::affluent// premier mot apres "de la famille"  correspond à affluent
+un sous-affluent de ->^[a-zA-Z0-9]{4,}:::affluent// premier mot apres "de la famille"  correspond à ssAffluent
+dans le départment de ->^[a-zA-Z0-9]{4,}:::département// premier mot apres "dans le départment de"  correspond à ssAffluent
+né ->[0-9]{4}:::naissance// première date apres "découvert le" correspond à naissance
+née ->[0-9]{4}:::naissance// première date apres "découvert le" correspond à naissance
+naturalisé ->^[a-z]{4,}:::nationalité
+naturalisée->^[a-z]{4,}:::nationalité

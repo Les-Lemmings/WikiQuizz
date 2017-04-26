@@ -1,0 +1,63 @@
+<div id="page">
+
+    <section>
+        <fieldset id="field2">
+            <legend> <h2>Menu</h2> </legend>
+    
+                <input #nombreQuestion type="number" />
+                <label>Nombre questions</label>
+                <br>
+
+                <input type="checkbox" [(ngModel)]="marcheTest"/>
+                <label>marche</label>
+                <br>
+
+                <input type="checkbox" [(ngModel)]="pecheTest"/>
+                <label>peche</label>
+                <br>
+
+                <button (click)=resultat(nombreQuestion.value)>Boom</button>
+
+        </fieldset>
+    </section>
+
+    <section>
+        <fieldset id="field2">
+            <legend> <h2>Image</h2> </legend>
+                <img src="app/quiz/partie/photo.jpg" width="50px" height="50px">
+        </fieldset>
+    </section>
+
+    <section>
+        <fieldset id="field2">
+            <legend> <h2>Question</h2> </legend>
+
+            <label for="Identifiant">Bla Bla Bla, je suis une question</label>
+
+        </fieldset>
+    </section>
+
+    <section>
+        <fieldset id="field2">
+            <legend> <h2>Reponse</h2> </legend>
+
+            <label for="reponse1">Reponse 1</label>
+            <input type="text" name="reponse1" id="reponse"/>
+            <br>
+            <br>
+
+            <label for="reponse2">Reponse 2</label>
+            <input type="text" name="reponse2" id="reponse"/>
+            <br>
+            <br>
+
+            <label for="reponse3">Reponse 3</label>
+            <input type="text" name="reponse3" id="reponse"/>
+            <br>
+            <br>
+
+            <input type="submit" value="Suivant" >
+        </fieldset>
+    </section>
+
+</div>

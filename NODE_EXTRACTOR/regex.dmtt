@@ -1,0 +1,91 @@
+dans l'infobox :
+(Naissance ) ->( [0-9]{4}) //au moins quatre occurrences de chiffres decimaux qui se suivent //correspond à naissance
+(Décés ) ->( [0-9]{4}) //au moins quatre occurrences de chiffres decimaux qui se suivent //correspond à décés
+(Nationalité )->(.*?) //correspond à nationalité
+(Nat. Sportive)->(.*?) //correspond à nationalité
+(Pays )->(.*?) //correspond à nationalité de naissance
+(Lieu de Naissance)->(.*?) //correspond à nationalité
+(Lieu)->(.*?) //correspond à nationalité de naissance
+(Taille)->(.*?) //correspon à taille
+(Poids)->(.*?) // correspond à poids
+(Taille/Poids)->(.[^/]?), ( ^[^/]*)// n'importe quel caractere qui vient apres le /,  // correspond à poids
+(Arme)->(.*?) // correspond à arme
+(Sport pratiqué)-> (.*?) // correspond à sport
+(Période d'activité)->(.*?) // correspond à periodeDActivité
+(Poste)->(.*?) // correspond à poste
+(Position)->(.*?) // correspond à poste
+(Activités)->(.*?) // correspond à activité
+(Activité)->(.*?) // correspond à activité
+(autres Activités)->(.*?) // correspond à activité
+(profession)->(.*?) // correspond à activité
+(Alias)->(.*?) // correspond à alias
+(Surnom)->(.*?) // correspond à alias
+(Fratrie)->(.*?) // correspond à fratrie
+(Partie politique)->(.*?) // correspond à partiepolitique (vive Mélenchon !)
+(distinction)->(.*?) // correspond à distinction
+(formation)->(.*?) // correspond à formation
+(instrument)->(.*?) // correspond à instrument
+(label)->(.*?) // correspond à label
+(genre artisitque)->(.*?) // correspond à genre
+
+(région)->(.*?) // correspond à région
+(département)->(.*?) // correspond à département
+(canton)->(.*?) // correspond à canton
+(intercommunalité)->(.*?) // correspond à intercommunalité
+(maire)->(.*?) // correspond à maire
+(municipalité)->(.*?) // correspond à municipalité
+(mandat)->(.*?) // correspond à mandat
+(code postal)->(.*?) // correspond à code postal
+(code commune)->(.*?) // correspond à code commune
+(gentillé)->(.*?) // correspond à gentillé
+(population municipale)->(.*?) // correspond à populationMunicipale
+(population)->(.*?) // correspond à populationMunicipale
+(densité)->(.*?) // correspond à densité
+(localisation)->(.*?) // correspond à localisation
+(land)->(.*?) // correspond à land
+(district)->(.*?) // correspond à district
+(comitat)->(.*?) // correspond à comitat
+(indicatif téléphonique international)->(.*?) // correspond à indTelInt
+(indicatif téléphonique local)->(.*?) // correspond à indTelLoc
+(coordonnées)->(.*?) // correspond à coordonnées
+(Etat)->(.*?) // correspond à état
+(Langue(s))->(.*?) // correspond à langue
+(Immatriculation)->(.*?) // correspond à immatriculation
+(Chef-lieu)->(.*?) // correspond à chef-lieu
+(Province)->(.*?) // correspond à province
+
+(Genre)->(.*?) // correspond à immatriculation
+(Cible éditorial)->(.*?) // correspond à chef-lieu
+(Auteur)->(.*?) // correspond à province
+(Editeur)->(.*?) // correspond à éditeur
+(Prépublication)->(.*?) // correspond à prépublication
+(Sortie initiale)->(.*?) // correspond à sortie
+(Sortie)->(.*?) // correspond à sortie
+(Titre)->(.*?) // correspond à titre
+(Réalisation)->(.*?) // correspond à réalisation
+(Scénario)->(.*?) // correspond à scénario
+(Durée)->(.*?) // correspond à durée
+(Acteurs principaux)->(.*?) // correspond à acteurs
+(pays d'origine)->(.*?) // correspond à pays
+(Lieu de parution)->(.*?) // correspond à lieu
+(date de parution)->(.*?) // correspond à date
+
+
+
+(Règne)->(.*?) // correspond à Règne
+(Embranchement)->(.*?) // correspond à Embranchment
+(Sous-embr)->(.*?) // correspond à ssEmbr
+(Classe)->(.*?) // correspond à classe
+(Super-classe)->(.*?) // correspond à SuperClasse
+(Sous-classe)->(.*?) // correspond à ssClasse
+(Super-ordre)->(.*?) // correspond à SuperOrdre
+(Ordre)->(.*?) // correspond à ordre
+(Infra-ordre)->(.*?) // correspond à InfraOrdre
+(Famille)->(.*?) // correspond à famille
+(Sous-famille)->(.*?) // correspond à sousFamille
+(Tribu)->(.*?) // correspond à tribu
+(Sous-tribu)->(.*?) // correspond à sousTribu
+
+(Altitude)->(.*?) // correspond à altitude
+(Massif)->(.*?) // correspond à massif
+(Surface)->(.*?) // correspond à surface
