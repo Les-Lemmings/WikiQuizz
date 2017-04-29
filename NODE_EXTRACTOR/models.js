@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var random = require('mongoose-simple-random');
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://192.168.1.80:27017/blog', function(err) {
+mongoose.connect('mongodb://localhost:27017/wikiquizz', function(err) {
   if (err) { throw err; }
 });
 
@@ -21,7 +21,7 @@ var syntagmeSchema = new mongoose.Schema({
 var questionSchema = new mongoose.Schema({
 	qid : mongoose.Schema.ObjectId,
 	titre : String,
-	article : { type : String, unique: true, match: /^(https?:\/\/)?.*\/?$/ },
+	article : { type : String, match: /^(https?:\/\/)?.*\/?$/ },
 	categorie : String,
 	validee: Boolean,
 	image: [ String ], // a.image.data = fs.readFileSync(imgPath); a.image.contentType = "image/png";
@@ -66,22 +66,22 @@ module.exports.ajouterQuestion = function(q, s) {
 };
 
 module.exports.validerQuestion = function(q, callback) {
-	var query = QuestionModel.update({ _id: q._id }, {$set: { validee:false, categorie:q.categorie, syntagmes:q.syntagmes }}, callback);
+	var query = QuestionModel.update({ _id: q._id }, {$set: { validee:true, categorie:q.categorie, syntagmes:q.syntagmes }}, callback);
 }
 
 module.exports.trouverNonValidee = function(callback) {
 	var query = QuestionModel.find({}, function(err, questions) {
 		callback(questions);
 	}).where('validee').equals(false);
-}
+};
 
 module.exports.validerQuestionParId = function(id, callback) {
 	var query = QuestionModel.update({ _id: id }, { $set: { validee: true }}, callback);
-}
+};
 
 module.exports.invaliderToutesQuestions = function(callback) {
 	var query = QuestionModel.update({ validee:true }, { $set: { validee: false }}, callback);
-}
+};
 
 module.exports.findRandomQuestion = function(number, categories, callback) {
 	/*QuestionModel.count(function(err, count) {
@@ -94,22 +94,25 @@ module.exports.findRandomQuestion = function(number, categories, callback) {
 
 	QuestionModel.find().where('categorie').in(categories).exec(function(err, res) {
 		console.log(number, res.length);
-		if(number >= res.length) {
-			let num = res.length - 1;
+		let quest = res;
+		let num = number;
+		if(number >= quest.length) {
+			num = quest.length - 1;
 		}
-		let num = number; 
+		let max = quest.length;
 
-		for(let i = 0; i< res.length - num;i++) {
+		for(let i = 0; i< max - num;i++) {
 			console.log('luul');
-			res.splice(Math.floor(Math.random()*res.length),1);
+			quest.splice(Math.floor(Math.random()*quest.length),1);
+			console.log("num a supprimer", res.length-num, quest.length);
 		}
-		callback(err, res);
+        return callback(err, quest);
 	});
-}
+};
 
 module.exports.removeQuestionById = function(id, callback) {
 	QuestionModel.findByIdAndRemove(id, callback);
-}
+};
 
 //Vérifier que la réponse dans une boite de réponse correspond à un syntagme de la question ou sameAs
 
@@ -117,19 +120,19 @@ module.exports.findQuestionById = function(id, callback) {
 	QuestionModel.findById(id, function(err, res) {
 		callback(res);
 	});
-}
+};
 
 module.exports.findQuestionByUrl = function(url, callback) {
 	QuestionModel.findOne({}, function(err, res) {
 		callback(res);
 	}).where("article").equals(url);
-}
+};
 
 module.exports.findQuestionByCategorie = function(categorie, callback) {
 	QuestionModel.findOne({}, function(err, res) {
 		callback(res);
 	}).where("categorie").equals(categorie);
-}
+};
 
 
 
