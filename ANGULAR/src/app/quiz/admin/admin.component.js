@@ -22,7 +22,7 @@ var AdminComponent = (function () {
     AdminComponent.prototype.clickedAjout = function (value) {
         console.log(value);
         console.log('exportation de données');
-        this.http.post('http://192.168.1.31:4000/validateQuestion', value, this.getPutHeaders())
+        this.http.post('http://192.168.1.76:4000/validateQuestion', value, this.getPutHeaders())
             .map(function (res) { return res.json(); })
             .subscribe(function (res) { return console.log(res.msg); }, function (err) { return console.error(err); }, function () { return console.log('done'); });
         console.log("fini");
@@ -36,21 +36,21 @@ var AdminComponent = (function () {
         var _this = this;
         console.log(value);
         console.log('exportation de données');
-        this.http.get('http://192.168.1.31:4000/removeQuestion/' + value)
+        this.http.get('http://192.168.1.76:4000/removeQuestion/' + value)
             .map(function (res) { return res.json(); })
             .subscribe(function (res) { return _this.clickedQuestions(); }, function (err) { return console.error(err); }, function () { return console.log('done'); });
     };
     AdminComponent.prototype.clickedQuestions = function () {
         var _this = this;
         console.log('importation de données');
-        this.http.get('http://192.168.1.31:4000/questionsOnHold')
+        this.http.get('http://192.168.1.76:4000/questionsOnHold')
             .map(function (res) { return res.json(); })
             .subscribe(function (res) { return _this.resultatQuestions(res); }, function (err) { return console.error(err); }, function () { return console.log('done'); });
     };
     AdminComponent.prototype.appel_serveur = function (nombre) {
         this.nombreQuestion = nombre;
         console.log('importation de données');
-        this.http.get('http://192.168.1.31:4000/generate/' + this.nombreQuestion)
+        this.http.get('http://192.168.1.76:4000/generate/' + this.nombreQuestion)
             .map(function (res) { return res.json(); })
             .subscribe(function (res) { return console.log(res); }, function (err) { return console.error(err); }, function () { return console.log('done'); });
     };

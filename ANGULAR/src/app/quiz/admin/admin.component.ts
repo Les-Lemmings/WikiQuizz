@@ -29,7 +29,7 @@ export class AdminComponent
 
 		console.log('exportation de données');
 
-		this.http.post('http://192.168.1.31:4000/validateQuestion', value, this.getPutHeaders())
+		this.http.post('http://192.168.1.76:4000/validateQuestion', value, this.getPutHeaders())
 				.map((res:Response) => res.json())
 				.subscribe(res => console.log(res.msg),
 					err => console.error(err),
@@ -50,7 +50,7 @@ export class AdminComponent
 		console.log(value);
 
 		console.log('exportation de données');
-		this.http.get('http://192.168.1.31:4000/removeQuestion/'+value)
+		this.http.get('http://192.168.1.76:4000/removeQuestion/'+value)
 				.map((res:Response) => res.json())
 				.subscribe(res => this.clickedQuestions(),
 					err => console.error(err),
@@ -60,7 +60,7 @@ export class AdminComponent
 	clickedQuestions()
 	{
 			console.log('importation de données');
-			this.http.get('http://192.168.1.31:4000/questionsOnHold')
+			this.http.get('http://192.168.1.76:4000/questionsOnHold')
 				.map((res:Response) => res.json())
 				.subscribe(res => this.resultatQuestions(res),
 					err => console.error(err),
@@ -71,7 +71,7 @@ export class AdminComponent
 	{
 		this.nombreQuestion = nombre;
 		console.log('importation de données');
-		this.http.get('http://192.168.1.31:4000/generate/'+this.nombreQuestion)
+		this.http.get('http://192.168.1.76:4000/generate/'+this.nombreQuestion)
 				.map((res:Response) => res.json())
 				.subscribe(res => console.log(res),
 					err => console.error(err),

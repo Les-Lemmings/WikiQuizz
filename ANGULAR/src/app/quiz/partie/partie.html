@@ -1,4 +1,4 @@
-<div id="page">
+<div *ngIf="!fin">
 
     <section>
         <fieldset id="field2">
@@ -21,10 +21,11 @@
         </fieldset>
     </section>
 
+    <div *ngIf="numero >= 0">
     <section>
         <fieldset id="field2">
             <legend> <h2>Image</h2> </legend>
-                <img src="app/quiz/partie/photo.jpg" width="50px" height="50px">
+                <img src={{reponse[numero].image[0]}} width="400px" height="400px">
         </fieldset>
     </section>
 
@@ -32,31 +33,69 @@
         <fieldset id="field2">
             <legend> <h2>Question</h2> </legend>
 
-            <label for="Identifiant">Bla Bla Bla, je suis une question</label>
+            <label for="Identifiant">{{reponse[numero].titre}}</label>
 
         </fieldset>
     </section>
+
 
     <section>
         <fieldset id="field2">
             <legend> <h2>Reponse</h2> </legend>
 
-            <label for="reponse1">Reponse 1</label>
-            <input type="text" name="reponse1" id="reponse"/>
-            <br>
-            <br>
+            <table *ngFor="let syntagme of reponse[numero].syntagmes">
+                <tr>
+                    <td>
+                        <label for="reponse1">{{syntagme.data}}</label>
+                    </td>
+                    
+                </tr>
 
-            <label for="reponse2">Reponse 2</label>
-            <input type="text" name="reponse2" id="reponse"/>
-            <br>
-            <br>
+                <tr>
+                    <td>
+                        <input type="text" [(ngModel)]="syntagme.reponse" name="free" style="margin-bottom:10px;"/>
+                    </td>
+                </tr>
 
-            <label for="reponse3">Reponse 3</label>
-            <input type="text" name="reponse3" id="reponse"/>
-            <br>
-            <br>
+            </table>
 
-            <input type="submit" value="Suivant" >
+            <button (click)=clickedSuivant()>Suivant</button>
+        </fieldset>
+    </section>
+    </div>
+</div>
+
+<div *ngIf="fin">
+    <label for="reponse1">Félicitation, voici votre résultat: {{reponse.score}}</label>
+
+
+        <section *ngFor="let repon of reponse">
+        <fieldset id="field2">
+            <legend> <h2>Question</h2> </legend>
+            
+                <a href={{repon.article}} target="_blank"> Titre: {{repon.titre}} </a>
+                <br>
+                <br>
+
+                <img src={{repon.image[0]}} width="400px" height="400px">
+
+                <table *ngFor="let syntagme of repon.syntagmes">
+                    <tr>
+                        <td>
+                            <input type="text" name="reponse-{{syntagme}}" id="reponse" value={{syntagme.data}}/>
+                        </td>
+                        <td>
+                            <input type="text" name="reponse-{{syntagme}}" id="reponse"  value={{syntagme.value}} />
+                        </td>
+                        <td>
+                            <input type="text" name="reponse-{{syntagme}}" id="reponse"  value={{syntagme.reponse}} />
+                        </td>
+                        <td>
+                            <input type="text" name="reponse-{{syntagme}}" id="reponse"  value={{syntagme.resultat}} />
+                        </td>
+                    </tr>
+                </table>
+
         </fieldset>
     </section>
 </div>
