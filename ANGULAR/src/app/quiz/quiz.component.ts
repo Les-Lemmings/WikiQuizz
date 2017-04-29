@@ -13,7 +13,7 @@ import { AdminComponent } from './admin/admin.component';
 export class QuizComponent
 {
 	connecter :boolean = true;
-	admin :boolean = true;
+	admin :boolean = false;
 
 	onVoted(value :string)
 	{

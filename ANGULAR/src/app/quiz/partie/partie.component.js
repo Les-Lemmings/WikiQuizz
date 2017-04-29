@@ -17,6 +17,9 @@ var PartieComponent = (function () {
         this.pecheTest = false;
         this.nombreTest = 0;
         this.cat = "";
+        this.numero = -1;
+        this.fin = false;
+        this.i = 0;
         this.http = http;
         this.reponse = [];
     }
@@ -43,12 +46,42 @@ var PartieComponent = (function () {
     PartieComponent.prototype.clickedQuestionnaire = function () {
         var _this = this;
         console.log('exportation de données');
-        this.http.get('http://192.168.1.31:4000/requestQuestions?nb=' + this.nombreTest + '&cat=' + this.cat)
+        this.http.get('http://192.168.1.76:4000/requestQuestions?nb=' + this.nombreTest + '&cat=' + this.cat)
             .map(function (res) { return res.json(); })
             .subscribe(function (res) { return _this.resultatQuestionnaire(res); }, function (err) { return console.error(err); }, function () { return console.log('done'); });
     };
     PartieComponent.prototype.resultatQuestionnaire = function (res) {
         console.log(res);
+        this.reponse = res;
+        this.numero = 0;
+    };
+    PartieComponent.prototype.calcule = function () {
+        var _this = this;
+        console.log('exportation de données');
+        this.http.post('http://192.168.1.76:4000/calculerScore', this.reponse, this.getPutHeaders())
+            .map(function (res) { return res.json(); })
+            .subscribe(function (res) { return _this.resultatQuestionnaire(res); }, function (err) { return console.error(err); }, function () { return console.log('done'); });
+        console.log("fini");
+    };
+    PartieComponent.prototype.getPutHeaders = function () {
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/json');
+        return new http_1.RequestOptions({ headers: headers, withCredentials: false });
+    };
+    PartieComponent.prototype.clickedSuivant = function () {
+        this.numero++;
+        if (this.nombreTest <= this.numero) {
+            this.fin = true;
+            this.numero = 0;
+            for (this.numero; this.numero < this.nombreTest; this.numero++) {
+                for (this.i; this.i < this.reponse[this.numero].syntagmes.length; this.i++) {
+                    if (this.reponse[this.numero].syntagmes[this.i].reponse == null)
+                        (this.reponse[this.numero].syntagmes[this.i].reponse = "");
+                }
+                this.i = 0;
+            }
+            this.calcule();
+        }
     };
     return PartieComponent;
 }());
