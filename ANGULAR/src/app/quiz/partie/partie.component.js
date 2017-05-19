@@ -76,7 +76,7 @@ var PartieComponent = (function () {
             for (this.numero; this.numero < this.nombreTest; this.numero++) {
                 for (this.i; this.i < this.reponse[this.numero].syntagmes.length; this.i++) {
                     if (this.reponse[this.numero].syntagmes[this.i].reponse == null)
-                        (this.reponse[this.numero].syntagmes[this.i].reponse = "");
+                        this.reponse[this.numero].syntagmes[this.i].reponse = "";
                 }
                 this.i = 0;
             }

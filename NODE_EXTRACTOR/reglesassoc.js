@@ -3,10 +3,15 @@ var model = require("./models");
 var fs = require("fs");
 var events = require('events');
 var eventEmitter = new events.EventEmitter();
+var Treetagger = require('treetagger');
+
+var Ngram = require('node-ngram');
+
+
 
 module.exports.all = function(scanRes) {
 	chercherSyntagmes(scanRes, function(titre, article, categorie, image, syntagmes) {
-		console.log("ZOOOB: ", image);
+		console.log("IMG: ", image);
 		model.ajouterQuestion({
 			titre: titre,
 			article: article,
@@ -33,7 +38,11 @@ var chercherSyntagmes = function(scanRes, cb) {
 
  	var syntagmes = [];
  	syntagmes = infobox;
-
+ 	var tagger = new Treetagger({ language: "french" });
+ 	tagger.tag("Bonjour monde", function (err, results) {
+    				console.log(results);
+				});
+	
 	fs.readFile("./regexText.txt", "utf8", function(err, data){
 		var regles = data.split("\n");
 		
@@ -47,6 +56,17 @@ var chercherSyntagmes = function(scanRes, cb) {
 				//on place l'index sur le mot suivant (+1 pour l'espace)
 				index = texte.indexOf(key) + key.length;
 				//test de la regex sur les mots suivants (jusqu'a 10 ou match)
+
+
+				
+				var ngram = new Ngram({
+					n: 3
+				});
+
+				console.log(ngram.ngram(texte.substring(index)));
+				// => [["Le", "Van"], ["Van", "Duyet"]]
+		
+				
 				console.log("suivant: "+texte.substring(index) +"\n");
 				for (var j=0; j<10; j++){
 					var motj = texte.substring(index).split(" ")[j];
