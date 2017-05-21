@@ -11,9 +11,13 @@ import { AdminComponent } from './admin/admin.component';
 
 export class QuizComponent
 {
+	//variable a true quand on clique sur jouer ou connexion
 	connecter :boolean = false;
+
+	//variable a true si on clique sur connexion
 	admin :boolean = false;
 
+	//fonction qui receptionne le clique sur jouer ou connexion depuis le composant connexion
 	onVoted(value :string)
 	{
 		if(value == "Jouer")

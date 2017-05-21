@@ -1,3 +1,5 @@
+
+<!-- si ce n'est pas la fin d'une partie!-->
 <div *ngIf="!fin">
 
     <div *ngIf="numero < 0">
@@ -5,28 +7,35 @@
         <fieldset id="field2">
             <legend> <h2>Menu</h2> </legend>
     
+                <!-- choisie le nombre de question voulu!-->
                 <input #nombreQuestion type="number" />
                 <label>Nombre questions</label>
                 <br>
 
+                <!-- si on veut des question sur le thème marche!-->
                 <input type="checkbox" [(ngModel)]="marcheTest"/>
                 <label>marche</label>
                 <br>
 
+                <!-- si on veut des question sur le thème peche!-->
                 <input type="checkbox" [(ngModel)]="pecheTest"/>
                 <label>peche</label>
                 <br>
 
+                <!-- envoie les informations au serveur !-->
                 <button (click)=resultat(nombreQuestion.value)>Boom</button>
 
         </fieldset>
     </section>
     </div>
 
+    <!-- si le nombre de question est plus grand que 0 alors on est dans une partie!-->
     <div *ngIf="numero >= 0">
     <section>
         <fieldset id="field2">
             <legend> <h2>Image</h2> </legend>
+
+                <!-- sert a afficher l'image!-->
                 <img src={{reponse[numero].image[0]}} width="400px" height="400px">
         </fieldset>
     </section>
@@ -35,6 +44,7 @@
         <fieldset id="field2">
             <legend> <h2>Question</h2> </legend>
 
+            <!-- affiche la question lié à l'image !-->
             <label for="Identifiant">{{reponse[numero].titre}}</label>
 
         </fieldset>
@@ -45,9 +55,11 @@
         <fieldset id="field2">
             <legend> <h2>Reponse</h2> </legend>
 
+            <!-- pour toutes les question lié à la question!-->
             <table *ngFor="let syntagme of reponse[numero].syntagmes">
                 <tr>
                     <td>
+                        <!-- affiche la donné attendu!-->
                         <label for="reponse1">{{syntagme.data}}</label>
                     </td>
                     
@@ -55,26 +67,31 @@
 
                 <tr>
                     <td>
+                        <!-- one de texte qui attend la réponse lié à la donné !-->
                         <input type="text" [(ngModel)]="syntagme.reponse" name="free" style="margin-bottom:10px;"/>
                     </td>
                 </tr>
 
             </table>
 
+            <!-- permet de chargé la question suivante!-->
             <button (click)=clickedSuivant()>Suivant</button>
         </fieldset>
     </section>
     </div>
 </div>
 
+<!-- si c'est la fin d'une partie!-->
 <div *ngIf="fin">
+    <!-- affiche un score calculé par le serveur!-->
     <label for="reponse1">Félicitation, voici votre résultat: {{reponse.score}}</label>
 
-
+        <!-- pour toutes les questions du questionnaire!-->
         <section *ngFor="let repon of reponse">
         <fieldset id="field2">
             <legend> <h2>Question</h2> </legend>
             
+                <!-- on affiche l'article source !-->
                 <a href={{repon.article}} target="_blank"> Titre: {{repon.titre}} </a>
                 <br>
                 <br>
@@ -84,15 +101,19 @@
                 <table *ngFor="let syntagme of repon.syntagmes">
                     <tr>
                         <td>
+                            <!-- on affiche le type de donné attendu!-->
                             <input type="text" name="reponse-{{syntagme}}" id="reponse" value={{syntagme.data}}/>
                         </td>
                         <td>
+                            <!-- on affiche la valeur attendu!-->
                             <input type="text" name="reponse-{{syntagme}}" id="reponse"  value={{syntagme.value}} />
                         </td>
                         <td>
+                            <!-- on affiche l'information donné par l'utilisateur!-->
                             <input type="text" name="reponse-{{syntagme}}" id="reponse"  value={{syntagme.reponse}} />
                         </td>
                         <td>
+                            <!-- on affiche si le serveur a considéré la valeur saisie juste ou pas!-->
                             <input type="text" name="reponse-{{syntagme}}" id="reponse"  value={{syntagme.resultat}} />
                         </td>
                     </tr>

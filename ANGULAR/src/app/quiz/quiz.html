@@ -1,13 +1,20 @@
 <header> <h1>El Quizzo</h1> </header>
 
+<!-- si on a cliquer sur jouer ou connexion !-->
 <div *ngIf="connecter">
 
+	<!-- si on a cliquer sur connexion  charge le composant admin!-->
 	<admin *ngIf="admin">Loading AdminComponent content here ...</admin>
 
+
+	<!-- composant menu qui a commencer à etre implémenter mais pas fini par manque de temps !-->
 	<!--<menu *ngIf="!admin">Loading MenuComponent content here ...</menu> !-->
 
+
+	<!-- si on a cliquer sur jouer charge le composant partie !-->
 	<partie *ngIf="!admin">Loading PartieComponent content here ...</partie>
 
 </div>
 
+<!-- si on n'a cliquer sur rien du tout charge le composant connexion qui gère le lancement d'une partie ou la connexion en tant que admin!-->
 <connexion *ngIf="!connecter" (onVoted)="onVoted($event)" >Loading ConnexionComponent content here ...</connexion>

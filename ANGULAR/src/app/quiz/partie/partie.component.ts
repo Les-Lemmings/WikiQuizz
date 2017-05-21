@@ -9,24 +9,38 @@ import 'rxjs/add/operator/map';
 
 export class PartieComponent
 {
-
+	//variable pour la connextion avec le serveur
 	http :Http;
 	reponse :any;
 
+	//variable qui enregistre le type de questionnaire voulue par l'utilisateur
 	marcheTest :boolean = false;
 	pecheTest :boolean = false;
+
+	//variable qui enregistre le nombre de question du questionnaire
 	nombreTest :number = 0;
+
+	/*variable qui va contenir une chaine de caractère contenant les 
+	information du questionnaire voulu au serveur*/
 	cat :string = "";
+
+	/*variable qui enregistre le numéro de la question courante et qui permet 
+	de chargé la question suivante*/
 	numero :number = -1;
+
+	//permet de savoir si l'on a fini le questionnaire ou non
 	fin :boolean = false;
 	i :number = 0;
 
+	//constructeur qui initialise les variables de communication avec le serveur
 	constructor(http :Http)
 	{
 		this.http = http;
 		this.reponse = [];
-	}	
+	}
 
+	/*fonction qui crée la chaine de caractère à envoyer au serveur sur le 
+	type de questionnaire voulu par l'utilisateur*/
 	resultat(nombre :number)
 	{
 
@@ -56,9 +70,11 @@ export class PartieComponent
 
 		console.log(this.cat);
 
+		//appel la fonction qui va envoyer la chaine au serveur
 		this.clickedQuestionnaire();
 	}
 
+	//fonction qui va envoyer au serveur le questionnaire que l'on souhaite
 	clickedQuestionnaire()
 	{
 		console.log('exportation de données');
@@ -69,6 +85,7 @@ export class PartieComponent
 					() => console.log('done'));
 	}
 
+	//fonction qui recois du serveur le questionnaire attendu et l'enregistre dans une variable
 	resultatQuestionnaire(res :any)
 	{
 		console.log(res);
@@ -76,6 +93,8 @@ export class PartieComponent
 		this.numero = 0;
 	}
 
+	/*fonction qui envoie le questionnaire fini au serveur pour le calcul du resultat et qui
+	renvoie le resultat*/
 	calcule()
 	{
 		console.log('exportation de données');
@@ -94,6 +113,7 @@ export class PartieComponent
 		return new RequestOptions({headers: headers, withCredentials: false});
 	}
 
+	//fonction qui charge la question suivante du questionnaireà partir de l'objet JSON
 	clickedSuivant()
 	{
 		this.numero++;

@@ -14,6 +14,7 @@ export class AdminComponent
 	questions :any;
 	nombreQuestion :number = 0;
 
+	//constructeur qui initialise les variables pour la communication avec le serveur
 	constructor(http :Http)
 	{
 		this.http = http;
@@ -21,6 +22,8 @@ export class AdminComponent
 		this.questions = this.clickedQuestions();
 	}	
 
+	/*envoie au serveur la question avec les modifications effectué si 
+	besoin pour l'ajou a la base de donnée*/
 	clickedAjout(value :any)
 	{
 		console.log(value);
@@ -43,6 +46,7 @@ export class AdminComponent
 		return new RequestOptions({headers: headers, withCredentials: false});
 	}
 
+	//envoie au serveur l'ID de la question à supprimer
 	clickedSuppression(value :string)
 	{
 		console.log(value);
@@ -55,6 +59,7 @@ export class AdminComponent
 					() => console.log('done'));
 	}
 
+	//envoie au serveur une demande de renvoie des question non traité
 	clickedQuestions()
 	{
 			console.log('importation de données');
@@ -65,6 +70,7 @@ export class AdminComponent
 					() => console.log('done'));
 	}
 
+	//fonction qui génère autant de question que l'on a choisi
 	appel_serveur(nombre :number)
 	{
 		this.nombreQuestion = nombre;
@@ -76,6 +82,7 @@ export class AdminComponent
 					() => console.log('done'));
 	}
 
+	//fonction qui recois les questions en attente du serveur et les stockes dans une variable
 	resultatQuestions(res :any)
 	{
 		this.questions = res;

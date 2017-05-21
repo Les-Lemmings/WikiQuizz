@@ -8,35 +8,49 @@
                 <label>Nombre questions</label>
                 <br>
 
+                <!-- bouton qui lance la génération du nombre de questions voulue!-->
                 <button (click)=appel_serveur(nombreQuestion.value)>Généré</button>
+
+                <!-- bouton qui redemande au serveur les questions en attente de validation 
+                ou suppression!-->
                 <button (click)=clickedQuestions()>Reload</button>
 
         </fieldset>
     </section>
 
-
+    <!-- pour toute les question renvoyer par le serveur!-->
     <section *ngFor="let question of questions">
         <fieldset id="field2">
             <legend> <h2>Question</h2> </legend>
             
+                <!-- on affiche le titre avec un lien URL vers l'article wikipédia source!-->
                 <a href={{question.article}} target="_blank"> Titre: {{question.titre}} </a>
                 <br>
                 <br>
 
                 <label>Catégorie</label>
+                <!-- affiche la question lié à l'article!-->
                 <input type="text" name="reponse3" id="reponse" [(ngModel)]="question.categorie" value={{question.categorie}}/>
                 <br>
 
+                <!-- affiche l'image lié a l'article!-->
                 <img src={{question.image[0]}} width="400px" height="400px">
 
+                <!-- pour toute les question et réponse extraite de l'article!-->
                 <table *ngFor="let syntagme of question.syntagmes">
                     <tr>
+                        <!-- on affiche la donné attendu (ex: date, age, etc...) !-->
                         <td><input type="text" name="reponse-{{syntagme}}" id="reponse" [(ngModel)]="syntagme.data" value={{syntagme.data}} /></td>
+
+                        <!-- on affiche la réponse lié à la donné!-->
                         <td><input type="text" name="reponse-{{syntagme}}" id="reponse" [(ngModel)]="syntagme.value" value={{syntagme.value}} /></td>
                     </tr>
                 </table>
 
+                <!-- bouton qui permet d'ajouter la question à la base de donné!-->
                 <button (click)=clickedAjout(question)>Ok</button>
+
+                <!-- bouton qui permet de supprimer la question car ne convient pas ou autre!-->
                 <button (click)=clickedSuppression(question._id)>Supprimer</button>
 
         </fieldset>
