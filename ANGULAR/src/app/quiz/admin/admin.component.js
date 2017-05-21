@@ -13,7 +13,6 @@ var http_1 = require("@angular/http");
 require("rxjs/add/operator/map");
 var AdminComponent = (function () {
     function AdminComponent(http) {
-        this.onVoted = new core_1.EventEmitter();
         this.nombreQuestion = 0;
         this.http = http;
         this.reponse = [];
@@ -58,16 +57,8 @@ var AdminComponent = (function () {
         this.questions = res;
         console.log(this.questions);
     };
-    AdminComponent.prototype.clickedDeconnexion = function (value) {
-        this.onVoted.emit(value);
-        console.log(value);
-    };
     return AdminComponent;
 }());
-__decorate([
-    core_1.Output(),
-    __metadata("design:type", Object)
-], AdminComponent.prototype, "onVoted", void 0);
 AdminComponent = __decorate([
     core_1.Component({
         selector: 'admin',

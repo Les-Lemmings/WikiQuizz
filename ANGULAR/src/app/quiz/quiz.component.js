@@ -12,7 +12,6 @@ var QuizComponent = (function () {
         this.admin = false;
     }
     QuizComponent.prototype.onVoted = function (value) {
-        console.log(value);
         if (value == "Jouer") {
             this.connecter = true;
         }

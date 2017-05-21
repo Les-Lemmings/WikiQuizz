@@ -1,5 +1,6 @@
 <div *ngIf="!fin">
 
+    <div *ngIf="numero < 0">
     <section>
         <fieldset id="field2">
             <legend> <h2>Menu</h2> </legend>
@@ -20,6 +21,7 @@
 
         </fieldset>
     </section>
+    </div>
 
     <div *ngIf="numero >= 0">
     <section>

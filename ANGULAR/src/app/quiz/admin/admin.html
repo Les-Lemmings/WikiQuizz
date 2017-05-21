@@ -8,7 +8,7 @@
                 <label>Nombre questions</label>
                 <br>
 
-                <button (click)=appel_serveur(nombreQuestion.value)>Ok</button>
+                <button (click)=appel_serveur(nombreQuestion.value)>Généré</button>
                 <button (click)=clickedQuestions()>Reload</button>
 
         </fieldset>
@@ -38,15 +38,6 @@
 
                 <button (click)=clickedAjout(question)>Ok</button>
                 <button (click)=clickedSuppression(question._id)>Supprimer</button>
-
-        </fieldset>
-    </section>
-
-    <section>
-        <fieldset id="field2">
-            <legend> <h2>Deconnexion</h2> </legend>
-    
-                <button #deconnexion value="Deconnexion" (click)=clickedDeconnexion(deconnexion.value)>Deconnexion</button>
 
         </fieldset>
     </section>

@@ -9,8 +9,6 @@ import 'rxjs/add/operator/map';
 
 export class AdminComponent
 {
-	@Output() onVoted = new EventEmitter<string>();
-
 	http :Http;
 	reponse :any;
 	questions :any;
@@ -82,11 +80,5 @@ export class AdminComponent
 	{
 		this.questions = res;
 		console.log(this.questions);
-	}
-
-	clickedDeconnexion(value: string)
-	{
-		this.onVoted.emit(value);
-		console.log(value);
 	}
 }

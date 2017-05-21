@@ -85,8 +85,6 @@ export class PartieComponent
 				.subscribe(res => this.resultatQuestionnaire(res),
 					err => console.error(err),
 					() => console.log('done'));
-		
-		console.log("fini");
 	}
 
 	getPutHeaders()

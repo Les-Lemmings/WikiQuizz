@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-import { MenuComponent } from './menu/menu.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { PartieComponent } from './partie/partie.component';
 import { AdminComponent } from './admin/admin.component';
@@ -17,7 +16,6 @@ export class QuizComponent
 
 	onVoted(value :string)
 	{
-		console.log(value);
 		if(value == "Jouer")
 		{
 			this.connecter = true;

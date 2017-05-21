@@ -61,7 +61,6 @@ var PartieComponent = (function () {
         this.http.post('http://192.168.1.76:4000/calculerScore', this.reponse, this.getPutHeaders())
             .map(function (res) { return res.json(); })
             .subscribe(function (res) { return _this.resultatQuestionnaire(res); }, function (err) { return console.error(err); }, function () { return console.log('done'); });
-        console.log("fini");
     };
     PartieComponent.prototype.getPutHeaders = function () {
         var headers = new http_1.Headers();
