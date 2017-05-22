@@ -7,3 +7,12 @@ Le but est ici de récupérer un lot d'article wikipedia, et de générer de fa�
 
 ### Exploitation des données
 Le but est ici de faire jouer une personne. Elle doit répondre correctement aux Quizz.
+
+
+## Utilisation :
+Téléchargez Node js
+Téléchargez les dépendances en lançant la commande "npm install" dans les dossiers ANGULAR et NODE_EXTRACTOR
+Installez MongoDB sur votre plateforme, et faites le tourner sur le port 27017 (port par défaut)
+Lancez le serveur avec la commande "node app.js"
+Lancez le client avec la commande "npm start"
+Vous pouvez maintenant utiliser le projet dans le navigateur, un onglet devrait s'être ouvert.
