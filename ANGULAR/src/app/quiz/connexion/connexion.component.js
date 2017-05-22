@@ -13,6 +13,8 @@ var ConnexionComponent = (function () {
     function ConnexionComponent() {
         this.onVoted = new core_1.EventEmitter();
     }
+    /*fonction qui envoie la valeur du bouton selectionner (jouer, connexion, ...) au composant
+    quizz qui se chargera ensuite d'afficher se que l'utilisateur a demandé*/
     ConnexionComponent.prototype.clickedConnexion = function (value) {
         this.onVoted.emit(value);
     };

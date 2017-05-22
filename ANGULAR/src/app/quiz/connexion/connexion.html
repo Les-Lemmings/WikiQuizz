@@ -1,7 +1,7 @@
-<div id="page">
+<div id="page" class="row">
 
-    <section>
-        <fieldset id="field1" >
+    <section class="row connex">
+        <fieldset id="field1" class="col-sm-4" >
             <legend> <h2>Connexion</h2> </legend>
 
             <label for="Identifiant">Identifiant</label>
@@ -15,19 +15,19 @@
             <br>
 
             <!-- si on clique sur connexion envoie l'information au composant quizz!-->
-            <button #connexion value="Connexion" (click)=clickedConnexion(connexion.value)>Envoyer</button>
+            <button class="btn btn-primary" #connexion value="Connexion" (click)=clickedConnexion(connexion.value)>Envoyer</button>
 
         </fieldset>
 
-        <fieldset id="field2">
+        <fieldset id="field2" class="col-sm-4">
             <legend> <h2>Inscription</h2> </legend>
 
-            <label for="Identifiant">Identifiant</label>
+            <label for="Identifiant">Identifiant</label><br>
             <input type="email" name="Identifiant" id="Identifiant" placeholder="Ex : exemple@gmail.com" required="required"/>
             <br>
             <br>
 
-            <label for="MDP">Mot de passe</label>
+            <label for="MDP">Mot de passe</label><br>
             <input type="password" name="MDP" id="MDP" required="required"/>
             <br>
             <br>
@@ -42,15 +42,15 @@
             <br>
             <br>
 
-            <input type="submit" value="Envoyer" >
+            <input type="submit" class="btn btn-primary" value="Envoyer" >
 
         </fieldset>
 
-        <fieldset id="field2">
+        <fieldset id="field2" class="col-sm-4">
             <legend> <h2>Jouer directement</h2> </legend>
 
             <!-- si on clique sur jouer envoie l'information au composant quizz!-->
-            <button #jouer value="Jouer" (click)=clickedConnexion(jouer.value)>Jouer</button>
+            <button class="btn btn-primary" #jouer value="Jouer" (click)=clickedConnexion(jouer.value)>Jouer</button>
 
         </fieldset>
     </section>

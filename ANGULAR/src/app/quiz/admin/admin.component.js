@@ -12,12 +12,15 @@ var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 require("rxjs/add/operator/map");
 var AdminComponent = (function () {
+    //constructeur qui initialise les variables pour la communication avec le serveur
     function AdminComponent(http) {
         this.nombreQuestion = 0;
         this.http = http;
         this.reponse = [];
         this.questions = this.clickedQuestions();
     }
+    /*envoie au serveur la question avec les modifications effectué si
+    besoin pour l'ajou a la base de donnée*/
     AdminComponent.prototype.clickedAjout = function (value) {
         console.log(value);
         console.log('exportation de données');
@@ -31,6 +34,7 @@ var AdminComponent = (function () {
         headers.append('Content-Type', 'application/json');
         return new http_1.RequestOptions({ headers: headers, withCredentials: false });
     };
+    //envoie au serveur l'ID de la question à supprimer
     AdminComponent.prototype.clickedSuppression = function (value) {
         var _this = this;
         console.log(value);
@@ -39,6 +43,7 @@ var AdminComponent = (function () {
             .map(function (res) { return res.json(); })
             .subscribe(function (res) { return _this.clickedQuestions(); }, function (err) { return console.error(err); }, function () { return console.log('done'); });
     };
+    //envoie au serveur une demande de renvoie des question non traité
     AdminComponent.prototype.clickedQuestions = function () {
         var _this = this;
         console.log('importation de données');
@@ -46,6 +51,7 @@ var AdminComponent = (function () {
             .map(function (res) { return res.json(); })
             .subscribe(function (res) { return _this.resultatQuestions(res); }, function (err) { return console.error(err); }, function () { return console.log('done'); });
     };
+    //fonction qui génère autant de question que l'on a choisi
     AdminComponent.prototype.appel_serveur = function (nombre) {
         this.nombreQuestion = nombre;
         console.log('importation de données');
@@ -53,6 +59,7 @@ var AdminComponent = (function () {
             .map(function (res) { return res.json(); })
             .subscribe(function (res) { return console.log(res); }, function (err) { return console.error(err); }, function () { return console.log('done'); });
     };
+    //fonction qui recois les questions en attente du serveur et les stockes dans une variable
     AdminComponent.prototype.resultatQuestions = function (res) {
         this.questions = res;
         console.log(this.questions);

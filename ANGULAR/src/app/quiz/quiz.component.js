@@ -8,9 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var core_1 = require("@angular/core");
 var QuizComponent = (function () {
     function QuizComponent() {
+        //variable a true quand on clique sur jouer ou connexion
         this.connecter = false;
+        //variable a true si on clique sur connexion
         this.admin = false;
     }
+    //fonction qui receptionne le clique sur jouer ou connexion depuis le composant connexion
     QuizComponent.prototype.onVoted = function (value) {
         if (value == "Jouer") {
             this.connecter = true;

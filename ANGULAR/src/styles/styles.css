@@ -1,4 +1,46 @@
-#page
+* {
+    box-sizing: border-box;
+    color:white;
+}
+
+body {
+    margin:0;
+    padding: 0;
+    background-color: #333;
+}
+section {
+    margin:0;
+    padding: 0;
+}
+
+.question {
+    border: 1px solid grey;
+    border-radius: 3px;
+    padding: 10px;
+    background-color: #A64;
+    text-shadow: 0px 1px 13px rgba(150,150,150,0.3),
+             1px 0px 13px rgba(150,150,150,0.3),
+             1px 1px 13px rgba(150,150,150,0.3),
+             0px 0px 13px rgba(150,150,150,0.3);
+}
+
+.connex {
+    margin-top: 30px;
+}
+
+.titreWiki {
+    border-radius: 4px;
+    background-color: #6699cc;
+    padding: 10px;
+    text-shadow: 2px 2px black;
+}
+
+
+input {
+    color: #444;
+}
+
+/*#page
 {
     width: 800px;
     margin: auto;
@@ -88,4 +130,4 @@ p, li, a
     border: 4px #757575 outset;
     padding: 20px;
     margin-left: 70px;
-}
+}*/

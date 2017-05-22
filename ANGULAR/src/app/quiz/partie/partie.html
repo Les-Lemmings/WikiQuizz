@@ -2,8 +2,8 @@
 <!-- si ce n'est pas la fin d'une partie!-->
 <div *ngIf="!fin">
 
-    <div *ngIf="numero < 0">
-    <section>
+    <div class="row" *ngIf="numero < 0">
+    <section class="col-sm-4 offset-sm-4">
         <fieldset id="field2">
             <legend> <h2>Menu</h2> </legend>
     
@@ -23,36 +23,30 @@
                 <br>
 
                 <!-- envoie les informations au serveur !-->
-                <button (click)=resultat(nombreQuestion.value)>Boom</button>
+                <button class="btn btn-primary" (click)=resultat(nombreQuestion.value)>Boom</button>
 
         </fieldset>
     </section>
     </div>
 
     <!-- si le nombre de question est plus grand que 0 alors on est dans une partie!-->
-    <div *ngIf="numero >= 0">
-    <section>
-        <fieldset id="field2">
+    <div class="row question" *ngIf="numero >= 0">
+    <section class="col-sm-4" style="">
             <legend> <h2>Image</h2> </legend>
 
                 <!-- sert a afficher l'image!-->
-                <img src={{reponse[numero].image[0]}} width="400px" height="400px">
-        </fieldset>
+                <img src={{reponse[numero].image[0]}} width="200px" height="200px">
     </section>
 
-    <section>
-        <fieldset id="field2">
+    <section class="col-sm-4">
             <legend> <h2>Question</h2> </legend>
 
             <!-- affiche la question lié à l'image !-->
             <label for="Identifiant">{{reponse[numero].titre}}</label>
-
-        </fieldset>
     </section>
 
 
-    <section>
-        <fieldset id="field2">
+    <section class="col-sm-4">
             <legend> <h2>Reponse</h2> </legend>
 
             <!-- pour toutes les question lié à la question!-->
@@ -75,8 +69,7 @@
             </table>
 
             <!-- permet de chargé la question suivante!-->
-            <button (click)=clickedSuivant()>Suivant</button>
-        </fieldset>
+            <button class="btn btn-success" (click)=clickedSuivant()>Suivant</button>
     </section>
     </div>
 </div>

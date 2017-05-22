@@ -1,25 +1,26 @@
-<div id="page">
+<div id="page" class="row">
 
-    <section>
+    <section class="col-sm-12" style="margin-bottom: 30px;">
         <fieldset id="field2">
             <legend> <h2>Généré</h2> </legend>
     
-                <input #nombreQuestion type="number" />
-                <label>Nombre questions</label>
+                <label>Nombre de questions à générer</label><br><input #nombreQuestion type="number" />
+                
+                <br>
                 <br>
 
                 <!-- bouton qui lance la génération du nombre de questions voulue!-->
-                <button (click)=appel_serveur(nombreQuestion.value)>Généré</button>
+                <button class="btn btn-primary" (click)=appel_serveur(nombreQuestion.value)>Généré</button>
 
                 <!-- bouton qui redemande au serveur les questions en attente de validation 
                 ou suppression!-->
-                <button (click)=clickedQuestions()>Reload</button>
+                <button class="btn btn-success" (click)=clickedQuestions()>Reload</button>
 
         </fieldset>
     </section>
 
     <!-- pour toute les question renvoyer par le serveur!-->
-    <section *ngFor="let question of questions">
+    <section class="col-sm-6" style="margin-bottom: 20px;" *ngFor="let question of questions">
         <fieldset id="field2">
             <legend> <h2>Question</h2> </legend>
             
@@ -37,8 +38,8 @@
                 <img src={{question.image[0]}} width="400px" height="400px">
 
                 <!-- pour toute les question et réponse extraite de l'article!-->
-                <table *ngFor="let syntagme of question.syntagmes">
-                    <tr>
+                <table  *ngFor="let syntagme of question.syntagmes">
+                    <tr >
                         <!-- on affiche la donné attendu (ex: date, age, etc...) !-->
                         <td><input type="text" name="reponse-{{syntagme}}" id="reponse" [(ngModel)]="syntagme.data" value={{syntagme.data}} /></td>
 
@@ -48,10 +49,10 @@
                 </table>
 
                 <!-- bouton qui permet d'ajouter la question à la base de donné!-->
-                <button (click)=clickedAjout(question)>Ok</button>
+                <button style="margin-top: 10px;" class="btn btn-success" (click)=clickedAjout(question)>Ok</button>
 
                 <!-- bouton qui permet de supprimer la question car ne convient pas ou autre!-->
-                <button (click)=clickedSuppression(question._id)>Supprimer</button>
+                <button style="margin-top: 10px;" class="btn btn-danger" (click)=clickedSuppression(question._id)>Supprimer</button>
 
         </fieldset>
     </section>

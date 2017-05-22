@@ -6,6 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("@angular/core");
+//composant qui sert seulement de liaison avec le composant quizz
 var AppComponent = (function () {
     function AppComponent() {
     }
